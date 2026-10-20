@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class ConveyorBeltScroll : MonoBehaviour
+public class ScrollTexture : MonoBehaviour
 {
     public float scrollSpeed = 0.5f;
     private Renderer rend;
@@ -12,10 +12,8 @@ public class ConveyorBeltScroll : MonoBehaviour
 
     void Update()
     {
-        // Calculate movement over time
         float offset = Time.time * scrollSpeed;
-
-        // URP Lit shaders use "_BaseMap" for the main texture
-        rend.material.SetTextureOffset("_BaseMap", new Vector2(0, -offset));
+        // Scrolls the texture along the Y axis. Change to (offset, 0) if it moves sideways.
+        rend.material.mainTextureOffset = new Vector2(0, -offset);
     }
 }
